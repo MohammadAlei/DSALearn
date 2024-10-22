@@ -1,0 +1,112 @@
+<div class="container-fluid">
+  <header class="row bg-primary text-white p-3  header-ht">
+      <div class="d-inline-flex gap-1">
+        <h1>My Application</h1>
+        <button class="btn btn-light" (click)="toggleSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+  <div class="row">
+    <nav class="col-auto bg-dark sidebar p-0" [ngClass]="{'collapsed': isCollapsed}">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="d-inline d-sm-none"> </span>
+            <!-- <span class="d-none d-sm-inline p-2" [ngClass]="{'d-none': isCollapsed}">Dashboard</span> -->
+            <span class="d-none p-2" [ngClass]="isCollapsed ? '' : 'd-sm-inline'">Logout</span>
+
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fas fa-user"></i>
+            <span class="d-inline d-sm-none"> </span>
+            <!-- <span class="d-none d-sm-inline p-2" [ngClass]="{'d-none': isCollapsed}">Profile</span> -->
+            <span class="d-none p-2" [ngClass]="isCollapsed ? '' : 'd-sm-inline'">Logout</span>
+
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fas fa-cog"></i>
+            <span class="d-inline d-sm-none"> </span>
+            <!-- <span class="d-none d-sm-inline p-2" [ngClass]="{'d-none': isCollapsed}">Settings</span> -->
+            <span class="d-none p-2" [ngClass]="isCollapsed ? '' : 'd-sm-inline'">Logout</span>
+
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">
+            <i class="fas fa-sign-out-alt"></i>
+            <span class="d-inline d-sm-none"> </span>
+            <!-- <span class="d-none d-sm-inline p-2" [ngClass]="{'d-none': isCollapsed}">Logout</span> -->
+            <span class="d-none p-2" [ngClass]="isCollapsed ? '' : 'd-sm-inline'">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main class="col bg-light p-4">
+      <h2>Welcome to the Dashboard</h2>
+      <p>Your content goes here.</p>
+    </main>
+  </div>
+</div>
+---------------------------end html---------------
+
+.sidebar {
+    height: 90vh; /* Set sidebar height to 90vh */
+   transition: width 1s ease; /* Smooth transition */
+}
+
+.sidebar.collapsed {
+  width: auto; /* Width when collapsed */
+  transition: width 1s ease; /* Smooth transition */
+
+}
+  .header-ht{
+    height: 10vh;
+  }
+  @media (max-width: 576px) {
+    .sidebar {
+      width: auto; /* Width for extra-small screens */
+    }
+  }
+  
+  @media (min-width: 576px) {
+    .sidebar {
+      width: auto; /* Width for small screens and above */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .sidebar {
+      width: auto; /* Adjust for larger screens if needed */
+    }
+  }
+  ------------------end css-----------
+
+
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet,CommonModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
+})
+export class AppComponent {
+  title = 'responsive-pro';
+  isCollapsed = false;
+
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+}
+----end ts file
